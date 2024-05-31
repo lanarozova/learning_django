@@ -7,16 +7,12 @@ from django.urls import reverse_lazy
 from django.utils.encoding import iri_to_uri
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.views.generic import FormView, CreateView, DeleteView, DetailView, ListView
-from accounts.models import User
 
 from accounts.forms import LoginForm, RegisterForm
 from config import settings
 
 
-from django.shortcuts import render
-from django.http import HttpRequest, HttpResponse
-
-
+@login_required
 def home_view(request: HttpRequest) -> HttpResponse:
     return render(request, "home.html")
 
@@ -59,9 +55,8 @@ def login_view(request):
             email = form.cleaned_data.get("email")
             password = form.cleaned_data.get("password")
             remember_me = form.cleaned_data.get("remember_me")
-            username = User.objects.get(email=email.lower()).username
-            user = authenticate(request, username=username, password=password)
-            print(email, password, user)
+
+            user = authenticate(request, email=email, password=password)
 
             if not user:
                 messages.error(request, "Invalid login or password")
@@ -86,4 +81,3 @@ def login_view(request):
 
     form = LoginForm()
     return render(request, "accounts/login.html", {"form": form})
-

@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  {% load bootstrap5 %}
+  {% load django_bootstrap5 %}
   {% bootstrap_css %}
   {% bootstrap_javascript %}
 
@@ -47,7 +47,7 @@
 
       <div class="text-end">
         <button type="button" onclick="location.href='{% url 'accounts:login' %}'" class="btn btn-outline-light me-2">Login</button>
-        <button type="button" onclick="location.href='#'" class="btn btn-warning">Sign-up</button>
+        <button type="button" onclick="location.href='{% url 'accounts:register' %}'" class="btn btn-warning">Sign-up</button>
       </div>
     </div>
   </div>
@@ -63,27 +63,3 @@
 {% endblock %}
 </body>
 </html>
-
-
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-<!--<head>-->
-<!--  {% load bootstrap5 %}-->
-<!--  {% bootstrap_css %}-->
-<!--  {% bootstrap_javascript %}-->
-<!--</head>-->
-<!--<body>-->
-
-<!--<div class="container">-->
-<!--  <ul class="nav bg-info">-->
-<!--    <li class="nav-item">-->
-<!--      <a class="nav-link link-light" href="/">HOME</a>-->
-<!--    </li>-->
-<!--    <li class="nav-item">-->
-<!--      <a class="nav-link link-light" href="/members">MEMBERS</a>-->
-<!--    </li>-->
-<!--  </ul>-->
-
-<!--</div>-->
-<!--</body>-->
-<!--</html>-->
