@@ -30,18 +30,6 @@ class User(AbstractUser):
         super().save(*args, **kwargs)
 
 
-class Profile(models.Model):
-    GENDER_CHOICES = (("m", "Male"), ("f", "Female"))
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
-    avatar = models.ImageField(upload_to='uploads/%Y/%m/%d/')
-    gender = models.CharField(max_length=6, choices=GENDER_CHOICES)
-    date_of_birth = models.DateField(validators=[validate_birth_date])
-    info = models.CharField(max_length=255)
-
-    def __str__(self):
-        return f"{self.user.username}'s profile"
-
-
 class AbstractToken(models.Model):
     create_at = models.DateTimeField(auto_now_add=True)
     token = models.CharField(max_length=64, unique=True, default=None, blank=True)

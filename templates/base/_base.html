@@ -45,9 +45,15 @@
                aria-label="Search">
       </form>
 
-      <div class="text-end">
+    <div class="text-end">
+        {% if request.user.is_authenticated %}
+
+        <button type="button" onclick="location.href='{% url 'accounts:logout' %}'" class="btn btn-outline-light me-2">Logout</button>
+
+        {% else %}
         <button type="button" onclick="location.href='{% url 'accounts:login' %}'" class="btn btn-outline-light me-2">Login</button>
         <button type="button" onclick="location.href='{% url 'accounts:register' %}'" class="btn btn-warning">Sign-up</button>
+        {% endif %}
       </div>
     </div>
   </div>

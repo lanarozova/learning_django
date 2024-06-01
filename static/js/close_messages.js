@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.alert').forEach(alertBlock => {
     setTimeout(() => {
       alertBlock.style.display = 'none';
-    }, 3000);
+    }, 5000);
 
     const closeButton = alertBlock.querySelector('.alert-close');
     if (closeButton) {
